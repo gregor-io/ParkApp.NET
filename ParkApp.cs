@@ -13,15 +13,18 @@ namespace ParkApp
     {
         static void Main()
         {
+            // string[] facilities = {"Bus", "Rock Climbing"};
             Park testPark = new Park("Zion",
                                 "Utah",
                                 "National Park",
-                                ["Tram", "Bus", "Rock Climbing"],
+                                "Bus, Rock Climbing",
                                 500,
                                 750000.00,
-                                100,000,
+                                100000,
                                 5.00);
-            Write("Hello?");
+            Write(testPark);
+            Write(testPark.GetFacilities());
+            Write(testPark.GetAnnualReport());
             
         }
     }

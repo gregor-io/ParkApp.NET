@@ -9,7 +9,7 @@ namespace Parkapp
         public string Name { get; set; }
         public string Location { get; }
         public string Type { get; }
-        public string[] Factilities { get; set; }
+        public string? Factilities { get; set; }
         public int NumEmployees { get; set; }
         public double AnnualBudget { get; set; }
         public int PriorYearVisitors { get; set; }
@@ -37,7 +37,7 @@ namespace Parkapp
             
         }
 
-        public Park(string name, string location, string type, string[] facilities)
+        public Park(string name, string location, string type, string facilities)
         {
             Name = name;
             Location = location;
@@ -45,7 +45,7 @@ namespace Parkapp
             Factilities = facilities;
         }
 
-        public Park(string name, string location, string type, string[] facilities,
+        public Park(string name, string location, string type, string facilities,
                     int numEmployees, double annualBudget, int priorYearVisitors, double fee)
         {
             Name = name;
@@ -56,15 +56,32 @@ namespace Parkapp
             AnnualBudget = annualBudget;
             PriorYearVisitors = priorYearVisitors;
             EntranceFee = fee;
-            Revenue;
-            CostPerVisitor;
+
+            // Init to 0 so that their setters take effect
+            Revenue = 0;
+            CostPerVisitor = 0;
         }
 
         public override string ToString()
         {
             return $"{"Park:", -15}" + Name +
-                   $"{"\nPark Location:", -15}" + Location +
-                   $"{"\nType of Park:", -15}" + Type;
+                   $"{"\nPark Location:", -16}" + Location +
+                   $"{"\nType of Park:", -16}" + Type;
+        }
+
+        public string GetFacilities()
+        {
+            return $"{"\nFacilities:", -16}" + Factilities;
+        }
+
+        public string GetAnnualReport()
+        {
+            return "\n===== Annual Report =====" + 
+                   $"{"\nEmployees:", -20}" + NumEmployees +
+                   $"{"\nPrior Year Guests:", -20}" + PriorYearVisitors +
+                   $"{"\nAnnual Budget:", -20}" + AnnualBudget +
+                   $"{"\nRevenue:", -20}" + Revenue +
+                   $"{"\nCost per Visistor:", -20}" + CostPerVisitor;
         }
         
     }
